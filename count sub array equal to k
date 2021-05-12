@@ -1,4 +1,4 @@
-/count the sub arrays where the sum is equal to  k
+//count the sub arrays where the sum is equal to  k
 #include<bits/stdc++.h>
 using namespace std;
 
