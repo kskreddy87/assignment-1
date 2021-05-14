@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;// no. of test cases
+    cin>>t;
+
+    while(t--)
+    {
+        int n;// size of the array
+        cin>>n;
+        long long int arr[n+1]={0};
+        long long int prefix[n+1]={0};
+        for(int i=1;i<=n;i++)
+        {
+            cin>>arr[i];  // reading array elements
+            prefix[i]=prefix[i-1]+arr[i];  // calculate the prefix array
+
+        }
+        int Q;// no. of queries
+        cin>>Q;
+        while(Q--)
+        {
+            int L,R;
+            cin>>L>>R;// reading left index and right index
+		if(L>0)
+		cout<<prefix[R]-prefix[L-1]<<;
+		else
+		cout<<prefix[R];
+        }
+    }
+}
