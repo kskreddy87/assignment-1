@@ -6,7 +6,7 @@ public:
     int setKthBit(int N, int K)
     {
       int i;
-	  int arr[100];// to store binary elements
+	  int arr[20];// to store binary elements
 	  for(i=0;N>0;i++)
        	{
 		arr[i]=N%2;    
