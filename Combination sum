@@ -1,0 +1,20 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namsespace std;
+int n;
+int N;
+void printarraycomb(int ind,int N,vector<int>&ds,int a[])
+{
+ if(ind==n)
+ {
+  if(N==0)
+  {
+   for(auto it:ds)
+   {
+    cout<<it<<" ";
+   }
+   cout<<"\n";
+   }
+   return;
+  }
+  
