@@ -1,0 +1,71 @@
+#include <iostream>
+#include <vector>
+#include <cstring>
+#include <iomanip>
+using namespace std;
+#define N 4
+struct Edge {
+	int src, dest;
+};
+
+// A class to represent a graph object
+class Graph
+{
+public:
+	// a vector of vectors to represent an adjacency list
+	vector<int> adjList[N];
+
+	// Constructor
+	Graph(vector<Edge> const &edges)
+	{
+		// add edges to the directed graph
+		for (Edge edge: edges)
+		{
+			int src = edge.src;
+			int dest = edge.dest;
+
+			adjList[src].push_back(dest);
+		}
+	}
+};
+void DFS(Graph const &graph, bool C[N][N], int root, int descendant)
+{
+	for (int child: graph.adjList[descendant])
+	{
+		// if `child` is an adjacent vertex of descendant, we have
+		// found a path from root->child
+		if (!C[root][child])
+		{
+			C[root][child] = true;
+			DFS(graph, C, root, child);
+		}
+	}
+}
+
+int main()
+{
+	// an array of graph edges as per the above diagram
+	vector<Edge> edges = {
+		{ 0, 2 }, { 1, 0 }, { 3, 1 }
+	};
+
+	// build a graph from the given edges
+	Graph graph(edges);
+  bool C[N][N];
+	memset(C, false, sizeof C);
+
+	// consider each vertex and start DFS from it
+	for (int v = 0; v < N; v++)
+	{
+		C[v][v] = true;
+		DFS(graph, C, v, v);
+
+		// print path info for vertex `v`
+		for (int u = 0; u < N; u++) {
+			cout << left << setw(4) << C[v][u];
+		}
+		cout << endl;
+	}
+
+	return 0;
+}
